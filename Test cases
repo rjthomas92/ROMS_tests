@@ -1,0 +1,17 @@
+# Now for the more complicated/realistic test cases
+# first I'll note the record from the Upwelling test case
+
+ Wind-Driven Upwelling/Downwelling over a Periodic Channel
+
+ Operating system  : Linux
+ CPU/hardware      : x86_64
+ Compiler system   : gfortran
+ Compiler command  : /usr/bin/gfortran
+ Compiler flags    : -frepack-arrays -O3 -ffast-math -
+ SVN Root URL      : https://www.myroms.org/svn/src/trunk
+ SVN Revision      : 1065
+
+ Local Root        : /home/rhysjt/modelling/src
+ Header Dir        : /home/rhysjt/modelling/Projects/upwelling
+ Header file       : upwelling.h
+ Analytical Dir    : /home/rhysjt/modelling/Projects/upwelling
