@@ -6,7 +6,8 @@ sudo apt-get install gfortran make perl netcdf-bin libnetcdff-dev libopenmpi-dev
 sudo apt-get install -y *libnetcdf* (-y skips asking for continue)
 
 # Downloading ROMS
-# first create the src directory mkdir src
+# first create the src directory 
+mkdir src
 svn checkout --username <myusername> https://www.myroms.org/svn/src/trunk src
 # the ROMS source code should then be installed into the src folder.
 # for any other part of the ROMS code that you need such as MATLAB tools or plotting, the command will be the same but with /matlab instead of /trunk
@@ -28,6 +29,8 @@ cp /trunk/ROMS/External/ocean_upwelling.in
 cp /trunk/ROMS/External/varinfo.dat 
 cp /trunk/ROMS/Include/upwelling.h
 # then we need to edit the build script to include the new location of our ROMS code
+#### I will note here since it's something that I consistently forget to do. Remember to edit VARNAME in the .in script before running. 
+#### The model will need to find the varinfo.dat so you will have to provide the FULL path for this. ~/ does NOT work.
 ## Also ensure that we have set the correct fortran compiler (here gfortran) and turned on NETCDF_4. We won't be running with mpi here so can turn that off
 # once this is edited correctly we can compile the model by using the bash script
 ./build_roms.sh
