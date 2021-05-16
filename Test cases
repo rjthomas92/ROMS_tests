@@ -21,3 +21,5 @@ case not being fully supported but either way a configuration of Vtransform and 
 * After looking into this, it seems like it has to do with the vertical coordinate overhaul for ROMS (notes can be found https://www.myroms.org/forum/viewtopic.php?f=13&t=1233)
 * Initially for ROMS, a value of 1 for Vtransform and Vstretching were used, this was later changed to 2. We can change these values back to 1 or reconfigure the 
 * Netcdf files (I'm not sure how to do this yet so I'll just change it for now).
+# As of the time of this edit, the DAMEE_4 test case has been running for about 13 hours (using romsS) so it might be worth adjusting the time 
+# scale for this next time I want to run it, I didn't look too deeply into this initially and slighly regretting not.
