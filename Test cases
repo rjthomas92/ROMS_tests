@@ -18,3 +18,6 @@
 
 Just a quick note here. When running the DAMEE_4 test case, the model ran into an issue with Vtransform and Vstretching. Perhaps this is the result of the test 
 case not being fully supported but either way a configuration of Vtransform and Vstretching of 1 instead of the default 2 seemed to work.
+* After looking into this, it seems like it has to do with the vertical coordinate overhaul for ROMS (notes can be found https://www.myroms.org/forum/viewtopic.php?f=13&t=1233)
+* Initially for ROMS, a value of 1 for Vtransform and Vstretching were used, this was later changed to 2. We can change these values back to 1 or reconfigure the 
+* Netcdf files (I'm not sure how to do this yet so I'll just change it for now).
