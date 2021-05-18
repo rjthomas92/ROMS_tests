@@ -23,3 +23,4 @@ case not being fully supported but either way a configuration of Vtransform and 
 * Netcdf files (I'm not sure how to do this yet so I'll just change it for now).
 # As of the time of this edit, the DAMEE_4 test case has been running for about 13 hours (using romsS) so it might be worth adjusting the time 
 # scale for this next time I want to run it, I didn't look too deeply into this initially and slighly regretting not.
+# It ended up taking ~16hrs. Not terrible I suppose.
