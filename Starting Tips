@@ -41,3 +41,5 @@ cp /trunk/ROMS/Include/upwelling.h
 - roms_dia.nc -- diagnostics file
 - roms_rst.nc -- restart file
 # HOORAY WE SUCCESSFULY COMPILED AND RAN OUR FIRST MODEL #
+* Just a note here. Realistically we should be running the model using a log file so that we can checkk our conditions later on. We can do this with:
+./romsS < roms.upwelling.in > my_upwelling.log
