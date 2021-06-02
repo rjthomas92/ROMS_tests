@@ -1,14 +1,14 @@
 # installing dependencies needed for ROMS 
 # need: Subversion, F90 compiler (I use gfortran), GNU make, Perl, NetCDF.
-sudo apt-get install gfortran make perl netcdf-bin libnetcdff-dev libopenmpi-dev openmpi-bin subversion git python3-pip python3-setuptools
+  sudo apt-get install gfortran make perl netcdf-bin libnetcdff-dev libopenmpi-dev openmpi-bin subversion git python3-pip python3-setuptools
 # ( I choose to just install the entire netcdf library here since it makes it simpler incase you miss something)
 # Don't actually need mpi here since I'm using a single cpu but this will be required for larger scale projects
-sudo apt-get install -y *libnetcdf* (-y skips asking for continue)
+  sudo apt-get install -y *libnetcdf* (-y skips asking for continue)
 
 # Downloading ROMS
 # first create the src directory 
-mkdir src
-svn checkout --username <myusername> https://www.myroms.org/svn/src/trunk src
+  mkdir src
+  svn checkout --username <myusername> https://www.myroms.org/svn/src/trunk src
 # the ROMS source code should then be installed into the src folder.
 # for any other part of the ROMS code that you need such as MATLAB tools or plotting, the command will be the same but with /matlab instead of /trunk
 # next let's check the libraries. We'll need ARPACK so we'll build that next
@@ -16,7 +16,7 @@ svn checkout --username <myusername> https://www.myroms.org/svn/src/trunk src
 # Building libraries
 # the ARPACK build is included in the ROMS source code found in ../trunk/Lib/ARPACK
 # we need to edit the ARmake.inc file to include the ARPACK location that we created so edit the $(home) location to be the top of ARPACK then just run 
-make lib
+  make lib
 # Just a note here, vi is great on Ubuntu subsystem but seeming to have issues on the VM so I'm going to use nano from here on out
 # this should create the ARPACK library libarpack.a that we'll need for some of the examples
 #### IT IS IMPORTANT THAT OUR LIBRARIES ARE COMPILED USING THE SAME FORTRAN COMPILER ####
@@ -24,17 +24,17 @@ make lib
 # Test cases
 # for the first test case we're going to run the upwelling case just to make sure everything works fine
 # first create the upwelling directory in our Projects folder then copy over the build script as well as some of the necessary files
-cp /trunk/ROMS/Bin/build.bash 
-cp /trunk/ROMS/External/ocean_upwelling.in 
-cp /trunk/ROMS/Include/upwelling.h
+  cp /trunk/ROMS/Bin/build.bash 
+  cp /trunk/ROMS/External/ocean_upwelling.in 
+  cp /trunk/ROMS/Include/upwelling.h
 # then we need to edit the build script to include the new location of our ROMS code
 ## Also ensure that we have set the correct fortran compiler (here gfortran) and turned on NETCDF_4. We won't be running with mpi here so can turn that off
 # once this is edited correctly we can compile the model by using the bash script
-./build_roms.sh
+  ./build_roms.sh
 # this should create a new file called romsS or romsG depending on whether we left optimisation on or off (or romsM if using mpi)
 #### before running ROMS, we need to tell the roms_upwelling.in file where to find varinfo. This can be found as VARNAME, simply edit the .in file to set the location
 # we will use this to run ROMS with
-./romsS < roms_upwelling.in
+  ./romsS < roms_upwelling.in
 # if ROMS was run correctly, this should create 4 files:
 - roms_his.nc -- history file
 - roms_avg.nc -- average file
@@ -42,4 +42,4 @@ cp /trunk/ROMS/Include/upwelling.h
 - roms_rst.nc -- restart file
 # HOORAY WE SUCCESSFULY COMPILED AND RAN OUR FIRST MODEL #
 * Just a note here. Realistically we should be running the model using a log file so that we can checkk our conditions later on. We can do this with:
-./romsS < roms.upwelling.in > my_upwelling.log
+  ./romsS < roms.upwelling.in > my_upwelling.log
