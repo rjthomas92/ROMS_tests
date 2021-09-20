@@ -8,3 +8,13 @@ case not being fully supported but either way a configuration of Vtransform and 
 # As of the time of this edit, the DAMEE_4 test case has been running for about 13 hours (using romsS) so it might be worth adjusting the time 
 # scale for this next time I want to run it, I didn't look too deeply into this initially and slighly regretting not.
 # It ended up taking ~16hrs. Not terrible I suppose.
+
+After coming back to this some time later, the compilation was having issues with a few things. Initially it was struggling to find the mpif.h
+file but this was fixed once I changed from using openmpi to mpif90 as my parallel tool. I'm thinking the reason for this might be that mpif90 was 
+able to find the required files easier since it was running f90 applications but I'm not sure why openmpi stopped working for me after  being perfectly fine 
+for so long.
+The second issue I ran into was an issue with the netcdf library. This wasn't an issue with my laptop so I'm not sure if it was jkust a build issue or what. 
+Editing the Linux-gfortran.mk file fixed this as once I changed the line:
+  LIBS += $(shell ${NF_CONFIG} --flibs) to
+  LIBS += -L/etc/NetCDF/c/lib -L/etc/NetCDF/fortran/lib -lnetcdff -lnetcdf
+the compilation worked fine. We'll see how the model runs with this later today.
