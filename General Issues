@@ -1,0 +1,12 @@
+Regarding Roms_tools:
+  - When creating the roms_grd.nc there seems to be an issue with the drivers only when NOT editing the landmask. A libGL error finding the driver persists.
+  Choosing to edit the landmask will allow the grid to be created as normal.
+  - Errors with differences in the vtransform/vstretching variables cause an issue when running roms with the created grid. These variables that are chosen 
+  in the make_grid.m file are also used by the ocean.in file to run ROMS and should agree. 
+  - The romstools_param.m file contains the base grid and variables for the make files. These should be created with the same parameters. Changing the 
+  parameters for one will require EACH make file to be recreated.
+  - The create_inifile.m file from romstools hard sets Vstretching=1. To fix issues with non compatibility, I have added the vstretching variable to the 
+  create_inifile to be read from romstools_param
+    { create_inifile.m : added extra vstretching term in input parameters and refer to it at the end of the definitions. }
+    { make_ini.m : added vstretching pulled from parameters to input variables of create_inifile.m. }
+  
